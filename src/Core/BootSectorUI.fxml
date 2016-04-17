@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.BootSectorController">
+   <children>
+      <Label layoutX="140.0" layoutY="20.0" text="BPB_BytsPerSec" />
+      <TextField fx:id="bytesPerSecField" layoutX="107.0" layoutY="52.0" />
+      <Label layoutX="140.0" layoutY="95.0" text="BPB_SecPerClus" />
+      <TextField fx:id="secPerClusField" layoutX="108.0" layoutY="130.0" />
+      <Label layoutX="151.0" layoutY="173.0" text="BPB_TotSec" />
+      <TextField fx:id="totalSecField" layoutX="108.0" layoutY="208.0" />
+      <Label layoutX="146.0" layoutY="254.0" text="BS_FilSysType" />
+      <TextField fx:id="filSysTypeField" layoutX="108.0" layoutY="287.0" />
+      <Label layoutX="151.0" layoutY="330.0" text="BPB_FATSz8" />
+      <TextField fx:id="fatsizeField" layoutX="109.0" layoutY="361.0" />
+   </children>
+</AnchorPane>

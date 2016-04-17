@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.FileController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <AnchorPane prefHeight="236.0" prefWidth="235.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="66.0" layoutY="28.0" mnemonicParsing="false" text="Nuevo archivo" />
+            <Button layoutX="67.0" layoutY="68.0" mnemonicParsing="false" text="Borrar archivo" />
+            <Button layoutX="68.0" layoutY="110.0" mnemonicParsing="false" text="Ver Directorio" />
+            <Button layoutX="20.0" layoutY="152.0" mnemonicParsing="false" text="Tabla de asignacion de archivos" />
+            <Button layoutX="83.0" layoutY="193.0" mnemonicParsing="false" text="Ver FAT" />
+            <Button layoutX="19.0" layoutY="233.0" mnemonicParsing="false" onAction="#openBootSector" text="Inspeccionar sector de arranque" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

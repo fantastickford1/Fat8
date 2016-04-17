@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.Controller">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="265.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="74.0" layoutY="37.0" text="Capacidad del dispositivo" />
+            <TextField fx:id="unitSize" layoutX="41.0" layoutY="67.0" />
+            <Label layoutX="89.0" layoutY="121.0" text="Sectores por Cluster" />
+            <TextField fx:id="sectorPerCluster" layoutX="68.0" layoutY="152.0" />
+            <Button fx:id="FormatButton" layoutX="106.0" layoutY="205.0" mnemonicParsing="false" onAction="#format" text="Formatear" />
+            <ChoiceBox fx:id="typeOfUnit" layoutX="191.0" layoutY="67.0" prefHeight="25.0" prefWidth="54.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
