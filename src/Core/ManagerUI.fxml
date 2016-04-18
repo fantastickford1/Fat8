@@ -32,12 +32,11 @@
    <center>
       <AnchorPane prefHeight="236.0" prefWidth="235.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="66.0" layoutY="28.0" mnemonicParsing="false" text="Nuevo archivo" />
-            <Button layoutX="67.0" layoutY="68.0" mnemonicParsing="false" text="Borrar archivo" />
-            <Button layoutX="68.0" layoutY="110.0" mnemonicParsing="false" text="Ver Directorio" />
-            <Button layoutX="20.0" layoutY="152.0" mnemonicParsing="false" text="Tabla de asignacion de archivos" />
-            <Button layoutX="83.0" layoutY="193.0" mnemonicParsing="false" text="Ver FAT" />
-            <Button layoutX="19.0" layoutY="233.0" mnemonicParsing="false" onAction="#openBootSector" text="Inspeccionar sector de arranque" />
+            <Button layoutX="66.0" layoutY="28.0" mnemonicParsing="false" onAction="#createFile" text="Nuevo archivo" />
+            <Button layoutX="67.0" layoutY="68.0" mnemonicParsing="false" onAction="#deleteFile" text="Borrar archivo" />
+            <Button layoutX="68.0" layoutY="110.0" mnemonicParsing="false" onAction="#openDirectory" text="Ver Directorio" />
+            <Button layoutX="84.0" layoutY="154.0" mnemonicParsing="false" onAction="#openFileAllocationTable" text="Ver FAT" />
+            <Button layoutX="20.0" layoutY="199.0" mnemonicParsing="false" onAction="#openBootSector" text="Inspeccionar sector de arranque" />
          </children>
       </AnchorPane>
    </center>

@@ -6,17 +6,17 @@ import javafx.beans.property.StringProperty;
 /**
  * Created by carli on 16/04/2016.
  */
-public class FileAllocation {
+public class FAT {
 
     private StringProperty ClusterNumber;
     private StringProperty Cluster;
 
-    public FileAllocation(){
+    public FAT(){
         this.ClusterNumber = null;
         this.Cluster = null;
     }
 
-    public FileAllocation(String number, String cluster){
+    public FAT(String number, String cluster){
         this.ClusterNumber = new SimpleStringProperty(number);
         this.Cluster = new SimpleStringProperty(cluster);
     }

@@ -30,9 +30,47 @@ public class FileController implements Initializable {
 
     @FXML
     private void createFile(){
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("CreateFileUI.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    private void deleteFile(){
 
     }
 
+    @FXML
+    private void openDirectory(){
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("DirectoryUI.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    private void openFileAllocationTable(){
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("FileAllocationTableControllerUI.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
     @FXML
     private void openBootSector(){

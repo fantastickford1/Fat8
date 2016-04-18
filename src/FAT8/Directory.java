@@ -18,14 +18,14 @@ public class Directory {
     private StringProperty DIR_FstClusHI; //Primer numero de cluster en el inicia el archivo
     private StringProperty DIR_FileSize; //Tamaño del archivo
 
-    public Directory(String fileName, String type, String time, String date, int firstCluster, int fileSize){
+    public Directory(String fileName, String type, String time, String date, String firstCluster, String fileSize){
         this.DIR_Name = new SimpleStringProperty(fileName);
         this.DIR_Attr = new SimpleStringProperty(type);
         this.DIR_NTRes = new SimpleStringProperty(0+"");
         this.DIR_CrtTime = new SimpleStringProperty(time);
         this.DIR_CrtDate = new SimpleStringProperty(date);
-        this.DIR_FstClusHI = new SimpleStringProperty(firstCluster+"");
-        this.DIR_FileSize = new SimpleStringProperty(fileSize+"");
+        this.DIR_FstClusHI = new SimpleStringProperty(firstCluster);
+        this.DIR_FileSize = new SimpleStringProperty(fileSize);
     }
 
     public Directory(){
