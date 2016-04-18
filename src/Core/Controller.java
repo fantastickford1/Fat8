@@ -35,7 +35,7 @@ public class Controller implements Initializable{
     private long Directory;
     private long sectores_ocupados;
     private long Clusters_ocupados;
-    private long free_Clusters;
+    public static long free_Clusters;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

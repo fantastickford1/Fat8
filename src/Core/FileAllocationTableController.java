@@ -31,7 +31,7 @@ public class FileAllocationTableController implements Initializable {
         clusterCol.setCellValueFactory(cell -> cell.getValue().clusterProperty());
 
         if (allocations.isEmpty()) {
-            for (int i = 1; i <= BootSector.getBPB_TotSec(); i++) {
+            for (int i = 1; i <= Controller.free_Clusters; i++) {
                 allocations.add(new FAT(i + "", "0x000"));
             }
         }
