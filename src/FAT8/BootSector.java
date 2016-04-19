@@ -8,12 +8,12 @@ public class BootSector {
     private static int BPB_BytsPerSec; //Bytes per Sector
     private static int BPB_SecPerClus; //The legal values are 1, 2, 4, 8, 16, 32, 64, and 128.
     private static long BPB_TotSec; //Total Sectors
-    private static final String BS_FilSysType = "FAT8"; //FAT8
+    private static final String BS_FilSysType = "FAT8"; //File System Type FAT8
     private static long BPB_FATSz8; //This field is the FAT8 count of sectors occupied by one FAT.
-    private static long BPB_TotClus;
-    private static long BPB_DirecSz8;
-    private static long BPB_TaknClus;
-    private static long BPB_FreeClus;
+    private static long BPB_TotClus; //Total clusters
+    private static long BPB_DirecSz8; //Directory size
+    private static long BPB_TaknClus; //Taken clusters
+    private static long BPB_FreeClus; //Free Clusters
 
     public static void setBPB_BytsPerSec(int BPB_BytsPerSec) {
         BootSector.BPB_BytsPerSec = BPB_BytsPerSec;

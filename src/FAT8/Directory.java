@@ -10,13 +10,13 @@ import javafx.beans.property.StringProperty;
  */
 public class Directory {
 
-    private StringProperty DIR_Name;
-    private StringProperty DIR_Attr; //DIRECTORY 0x10, ARCHIVE 0x20
-    private StringProperty DIR_NTRes; //Default 0 value
-    private StringProperty DIR_CrtTime; //Tiempo de creacion
-    private StringProperty DIR_CrtDate; //Fecha de creacion
-    private StringProperty DIR_FstClusHI; //Primer numero de cluster en el inicia el archivo
-    private StringProperty DIR_FileSize; //Tamaño del archivo
+    private StringProperty DIR_Name; //>> 11B
+    private StringProperty DIR_Attr; //DIRECTORY 0x10, ARCHIVE 0x20 >>1B
+    private StringProperty DIR_NTRes; //Default 0 value >>1B
+    private StringProperty DIR_CrtTime; //Tiempo de creacion >>3B
+    private StringProperty DIR_CrtDate; //Fecha de creacion >>2B
+    private StringProperty DIR_FstClusHI; //Primer numero de cluster en el inicia el archivo >>2B
+    private StringProperty DIR_FileSize; //Tamaño del archivo >>4B
 
     public Directory(String fileName, String type, String time, String date, String firstCluster, String fileSize){
         this.DIR_Name = new SimpleStringProperty(fileName);
