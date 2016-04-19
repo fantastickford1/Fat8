@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class BootSectorController implements Initializable {
 
     @FXML
-    TextField bytesPerSecField,secPerClusField,totalSecField,filSysTypeField,fatsizeField;
+    TextField bytesPerSecField,secPerClusField,totalSecField,filSysTypeField,fatsizeField,DirectorySzField,freeClusterField,taknClusField,totalClusField;
 
 
     @Override
@@ -25,12 +25,20 @@ public class BootSectorController implements Initializable {
         totalSecField.setEditable(false);
         filSysTypeField.setEditable(false);
         fatsizeField.setEditable(false);
+        DirectorySzField.setEditable(false);
+        freeClusterField.setEditable(false);
+        taknClusField.setEditable(false);
+        totalClusField.setEditable(false);
 
         bytesPerSecField.setText(BootSector.getBPB_BytsPerSec()+"");
         secPerClusField.setText(BootSector.getBPB_SecPerClus()+"");
         totalSecField.setText(BootSector.getBPB_TotSec()+"");
         filSysTypeField.setText(BootSector.getBS_FilSysType());
         fatsizeField.setText(BootSector.getBPB_FATSz8()+"");
+        DirectorySzField.setText(BootSector.getBPB_DirecSz8()+"");
+        freeClusterField.setText(BootSector.getBPB_FreeClus()+"");
+        taknClusField.setText(BootSector.getBPB_TaknClus()+"");
+        totalClusField.setText(BootSector.getBPB_TotClus()+"");
 
     }
 

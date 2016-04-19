@@ -1,5 +1,6 @@
 package Core;
 
+import FAT8.BootSector;
 import FAT8.Directory;
 import FAT8.FAT;
 import javafx.fxml.FXML;
@@ -25,11 +26,13 @@ public class DeleteFileController implements Initializable {
     @FXML private void deleteFile(){
         String fileName = filenameField.getText();
         String filefirstCluster = null;
+        String size = "";
 
         int count = 0;
         for (Directory file : DirectoryController.directories) {
                 if (file.getDIR_Name().equals(fileName)){
                     filefirstCluster = file.getDIR_FstClusHI();
+                    size = file.getDIR_FileSize();
                     DirectoryController.directories.remove(count);
                     break;
                 }
@@ -49,6 +52,10 @@ public class DeleteFileController implements Initializable {
             }
 
         }
+        long sizeFile = Long.parseLong(size);
+        sizeFile = sizeFile/ BootSector.getBPB_SecPerClus();
+        BootSector.setBPB_FreeClus(BootSector.getBPB_FreeClus()+sizeFile);
+
     }
 
 }

@@ -42,51 +42,56 @@ public class CreateFileController implements Initializable {
         String fileSize = fileSizeField.getText();
         String typeFile = sizeType.getValue();
         long clusters = 0;
-        long size = Long.parseLong(fileSize);
-        switch (typeFile){
-            case "Bytes":
-                break;
-            case  "Kb":
-                size = size *1024;
-                break;
-            case "Mb":
-                size = size * 1048576;
-                break;
-            case "Gb":
-                size = size * 1073741824;
-                break;
-            default:
-                //code..
-                break;
-        }
-        clusters = size/ BootSector.getBPB_SecPerClus();
-        String clusterNumber;
-        for (FAT fat : FileAllocationTableController.allocations) {
-            clusterNumber = fat.getClusterNumber();
-            String cluster = fat.getCluster();
-            if (cluster == "0x000"){
-                Directory newFile = new Directory(fileName,type,"now","now",clusterNumber,size+"");
-                DirectoryController.directories.add(newFile);
-                break;
-            }
-        }
-        int auxcout = 0;
-        for (FAT fat : FileAllocationTableController.allocations) {
-
-            String clusterN = fat.getClusterNumber();
-            String clust = fat.getCluster();
-            long numberC = Long.parseLong(clusterN);
-            numberC++;
-            if (clust == "0x000"){
-                auxcout++;
-                if (auxcout == clusters) {
-                    fat.setCluster("0xFFF");
+        if (type == "Directory"){
+            Directory newFile = new Directory(fileName,type,"now","now","null","0");
+            DirectoryController.directories.add(newFile);
+        }else {
+            long size = Long.parseLong(fileSize);
+            switch (typeFile) {
+                case "Bytes":
                     break;
-                }else
-                    fat.setCluster(numberC+"");
+                case "Kb":
+                    size = size * 1024;
+                    break;
+                case "Mb":
+                    size = size * 1048576;
+                    break;
+                case "Gb":
+                    size = size * 1073741824;
+                    break;
+                default:
+                    //code..
+                    break;
+            }
+            clusters = size / BootSector.getBPB_SecPerClus();
+            BootSector.setBPB_FreeClus(BootSector.getBPB_FreeClus() - clusters); //>>Actual free clusters
+            String clusterNumber;
+            for (FAT fat : FileAllocationTableController.allocations) {
+                clusterNumber = fat.getClusterNumber();
+                String cluster = fat.getCluster();
+                if (cluster == "0x000") {
+                    Directory newFile = new Directory(fileName, type, "now", "now", clusterNumber, size + "");
+                    DirectoryController.directories.add(newFile);
+                    break;
+                }
+            }
+            int auxcout = 0;
+            for (FAT fat : FileAllocationTableController.allocations) {
+
+                String clusterN = fat.getClusterNumber();
+                String clust = fat.getCluster();
+                long numberC = Long.parseLong(clusterN);
+                numberC++;
+                if (clust == "0x000") {
+                    auxcout++;
+                    if (auxcout == clusters) {
+                        fat.setCluster("0xFFF");
+                        break;
+                    } else
+                        fat.setCluster(numberC + "");
+                }
             }
         }
-
 
 
     }

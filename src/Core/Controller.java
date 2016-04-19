@@ -61,17 +61,21 @@ public class Controller implements Initializable{
         BootSector.setBPB_TotSec(numSectores);//>>>
 
         totalClusters = numSectores/sectorPCluster; //Numero total de clusters
+        BootSector.setBPB_TotClus(totalClusters);//>>>>
 
         FAT8Size = totalClusters/sector; //Tamaño que ocupa del FAT8 en sectores
         BootSector.setBPB_FATSz8(FAT8Size);//>>>
 
         Directory = (totalClusters*32)/sector; //Tamaño del directorio en sectores
+        BootSector.setBPB_DirecSz8(Directory);
 
         sectores_ocupados = 1 + FAT8Size + Directory; //sectores ocupados
 
         Clusters_ocupados = sectores_ocupados/sectorPCluster; //Clusters ocupados
+        BootSector.setBPB_TaknClus(Clusters_ocupados);
 
         free_Clusters =totalClusters- Clusters_ocupados; //Clusters Disponibles
+        BootSector.setBPB_FreeClus(free_Clusters);
 
         clusterSize = sector * sectorPCluster; //Tamañol de un cluster Bytes
         Stage stage = (Stage) FormatButton.getScene().getWindow();
