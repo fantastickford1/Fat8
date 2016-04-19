@@ -43,7 +43,15 @@ public class FileController implements Initializable {
 
     @FXML
     private void deleteFile(){
-
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("DeleteFileUI.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML
