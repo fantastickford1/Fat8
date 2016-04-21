@@ -45,7 +45,7 @@ public class CreateFileController implements Initializable {
         long clusters = 0;
         if (type == "Directory"){
             Directory newFile = new Directory(fileName,type,"now","now","null","0");
-            DirectoryController.directories.add(newFile);
+            Controller.directories.add(newFile);
         }else {
             long size = Long.parseLong(fileSize);
             switch (typeFile) {
@@ -69,17 +69,17 @@ public class CreateFileController implements Initializable {
                 BootSector.setBPB_FreeClus(BootSector.getBPB_FreeClus() - clusters); //>>Actual free clusters
                 BootSector.setBPB_TaknClus(BootSector.getBPB_TaknClus() + clusters); //>>Actual taken clusters
                 String clusterNumber;
-                for (FAT fat : FileAllocationTableController.allocations) {
+                for (FAT fat : Controller.allocations) {
                     clusterNumber = fat.getClusterNumber();
                     String cluster = fat.getCluster();
                     if (cluster == "0x000") {
                         Directory newFile = new Directory(fileName, type, "now", "now", clusterNumber, size + "");
-                        DirectoryController.directories.add(newFile);
+                        Controller.directories.add(newFile);
                         break;
                     }
                 }
                 int auxcout = 0;
-                for (FAT fat : FileAllocationTableController.allocations) {
+                for (FAT fat : Controller.allocations) {
 
                     String clusterN = fat.getClusterNumber();
                     String clust = fat.getCluster();

@@ -23,20 +23,16 @@ public class FileAllocationTableController implements Initializable {
     @FXML
     TableColumn<FAT,String> ClusterNoCol,clusterCol;
 
-    public static ObservableList<FAT> allocations = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ClusterNoCol.setCellValueFactory(cell -> cell.getValue().clusterNumberProperty());
         clusterCol.setCellValueFactory(cell -> cell.getValue().clusterProperty());
 
-        if (allocations.isEmpty()) {
-            for (int i = 1; i <= Controller.free_Clusters; i++) {
-                allocations.add(new FAT(i + "", "0x000"));
-            }
-        }
 
-        fileTable.setItems(allocations);
+
+        fileTable.setItems(Controller.allocations);
 
     }
 }

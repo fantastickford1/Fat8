@@ -29,18 +29,18 @@ public class DeleteFileController implements Initializable {
         String size = "";
 
         int count = 0;
-        for (Directory file : DirectoryController.directories) {
+        for (Directory file : Controller.directories) {
                 if (file.getDIR_Name().equals(fileName)){
                     filefirstCluster = file.getDIR_FstClusHI();
                     size = file.getDIR_FileSize();
-                    DirectoryController.directories.remove(count);
+                    Controller.directories.remove(count);
                     break;
                 }
             count++;
         }
         String lastcluster = filefirstCluster;
         String currentcluster;
-        for (FAT fat : FileAllocationTableController.allocations) {
+        for (FAT fat : Controller.allocations) {
             currentcluster = fat.getClusterNumber();
             if (currentcluster.equals(lastcluster)){
                 lastcluster = fat.getCluster();

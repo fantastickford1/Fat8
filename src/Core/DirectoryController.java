@@ -22,7 +22,7 @@ public class DirectoryController implements Initializable{
     @FXML
     TableColumn<Directory,String> nameCol,ArrtCol,NTResCol,timeCol,dateCol,fstClusterCol,fileSizeCol;
 
-    public static ObservableList<Directory> directories = FXCollections.observableArrayList();
+
 
 
     @Override
@@ -35,7 +35,7 @@ public class DirectoryController implements Initializable{
         fstClusterCol.setCellValueFactory(cell -> cell.getValue().DIR_FstClusHIProperty());
         fileSizeCol.setCellValueFactory(cell -> cell.getValue().DIR_FileSizeProperty());
 
-        dirTable.setItems(directories);
+        dirTable.setItems(Controller.directories);
     }
 
 

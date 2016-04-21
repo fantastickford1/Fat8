@@ -1,6 +1,10 @@
 package Core;
 
 import FAT8.BootSector;
+import FAT8.Directory;
+import FAT8.FAT;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,7 +31,6 @@ public class Controller implements Initializable{
     //Variables and Constant
     private final int sector = 128; //bytes
     private long numSectores;
-    private long numSectoresDisponibles;
     private long totalSize;
     private long totalClusters;
     private long clusterSize;
@@ -36,6 +39,9 @@ public class Controller implements Initializable{
     private long sectores_ocupados;
     private long Clusters_ocupados;
     public static long free_Clusters;
+
+    public static ObservableList<FAT> allocations = FXCollections.observableArrayList();
+    public static ObservableList<FAT8.Directory> directories = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,6 +85,7 @@ public class Controller implements Initializable{
 
         clusterSize = sector * sectorPCluster; //Tamañol de un cluster Bytes
         Stage stage = (Stage) FormatButton.getScene().getWindow();
+        setUP();
         openNextWindow();
         stage.close();
     }
@@ -97,6 +104,16 @@ public class Controller implements Initializable{
         controller.setStage(stage);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void setUP(){
+
+        if (Controller.allocations.isEmpty()) {
+            for (int i = 1; i <= Controller.free_Clusters; i++) {
+                Controller.allocations.add(new FAT(i + "", "0x000"));
+            }
+        }
+
     }
 
 
