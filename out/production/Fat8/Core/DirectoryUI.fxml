@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.DirectoryController">
+   <children>
+      <TableView fx:id="dirTable" layoutX="5.0" layoutY="14.0" prefHeight="344.0" prefWidth="609.0">
+        <columns>
+          <TableColumn fx:id="nameCol" prefWidth="90.0" text="DIR_Name" />
+          <TableColumn fx:id="ArrtCol" prefWidth="83.0" text="DIR_Attr" />
+            <TableColumn fx:id="NTResCol" prefWidth="85.0" text="DIR_NTRes" />
+            <TableColumn fx:id="timeCol" prefWidth="81.0" text="DIR_CrtTime" />
+            <TableColumn fx:id="dateCol" prefWidth="88.0" text="DIR_CrtDate" />
+            <TableColumn fx:id="fstClusterCol" prefWidth="93.0" text="DIR_FstClusHI" />
+            <TableColumn fx:id="fileSizeCol" prefWidth="88.0" text="DIR_FileSize" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

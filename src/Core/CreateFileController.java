@@ -5,6 +5,7 @@ import FAT8.Directory;
 import FAT8.FAT;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
@@ -64,33 +65,42 @@ public class CreateFileController implements Initializable {
                     break;
             }
             clusters = size / BootSector.getBPB_SecPerClus();
-            BootSector.setBPB_FreeClus(BootSector.getBPB_FreeClus() - clusters); //>>Actual free clusters
-            String clusterNumber;
-            for (FAT fat : FileAllocationTableController.allocations) {
-                clusterNumber = fat.getClusterNumber();
-                String cluster = fat.getCluster();
-                if (cluster == "0x000") {
-                    Directory newFile = new Directory(fileName, type, "now", "now", clusterNumber, size + "");
-                    DirectoryController.directories.add(newFile);
-                    break;
-                }
-            }
-            int auxcout = 0;
-            for (FAT fat : FileAllocationTableController.allocations) {
-
-                String clusterN = fat.getClusterNumber();
-                String clust = fat.getCluster();
-                long numberC = Long.parseLong(clusterN);
-                numberC++;
-                if (clust == "0x000") {
-                    auxcout++;
-                    if (auxcout == clusters) {
-                        fat.setCluster("0xFFF");
+            if (clusters < BootSector.getBPB_FreeClus()){
+                BootSector.setBPB_FreeClus(BootSector.getBPB_FreeClus() - clusters); //>>Actual free clusters
+                BootSector.setBPB_TaknClus(BootSector.getBPB_TaknClus() + clusters); //>>Actual taken clusters
+                String clusterNumber;
+                for (FAT fat : FileAllocationTableController.allocations) {
+                    clusterNumber = fat.getClusterNumber();
+                    String cluster = fat.getCluster();
+                    if (cluster == "0x000") {
+                        Directory newFile = new Directory(fileName, type, "now", "now", clusterNumber, size + "");
+                        DirectoryController.directories.add(newFile);
                         break;
-                    } else
-                        fat.setCluster(numberC + "");
+                    }
                 }
+                int auxcout = 0;
+                for (FAT fat : FileAllocationTableController.allocations) {
+
+                    String clusterN = fat.getClusterNumber();
+                    String clust = fat.getCluster();
+                    long numberC = Long.parseLong(clusterN);
+                    numberC++;
+                    if (clust == "0x000") {
+                        auxcout++;
+                        if (auxcout == clusters) {
+                            fat.setCluster("0xFFF");
+                            break;
+                        } else
+                            fat.setCluster(numberC + "");
+                    }
+                }
+            }else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("Can't save the file");
+                alert.setContentText("The file is higher than the memory");
+                alert.showAndWait();
             }
+
         }
 
 

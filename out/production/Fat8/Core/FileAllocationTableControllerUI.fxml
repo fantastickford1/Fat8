@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="272.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.FileAllocationTableController">
+   <children>
+      <TableView fx:id="fileTable" layoutX="14.0" layoutY="14.0" prefHeight="463.0" prefWidth="244.0">
+        <columns>
+          <TableColumn fx:id="ClusterNoCol" prefWidth="83.0" text="Cluster No." />
+          <TableColumn fx:id="clusterCol" prefWidth="160.0" text="Cluster" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

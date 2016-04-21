@@ -66,7 +66,7 @@ public class Controller implements Initializable{
         FAT8Size = totalClusters/sector; //Tamaño que ocupa del FAT8 en sectores
         BootSector.setBPB_FATSz8(FAT8Size);//>>>
 
-        Directory = (totalClusters*32)/sector; //Tamaño del directorio en sectores
+        Directory = (totalClusters*24)/sector; //Tamaño del directorio en sectores
         BootSector.setBPB_DirecSz8(Directory);
 
         sectores_ocupados = 1 + FAT8Size + Directory; //sectores ocupados

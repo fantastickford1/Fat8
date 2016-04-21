@@ -55,6 +55,7 @@ public class DeleteFileController implements Initializable {
         long sizeFile = Long.parseLong(size);
         sizeFile = sizeFile/ BootSector.getBPB_SecPerClus();
         BootSector.setBPB_FreeClus(BootSector.getBPB_FreeClus()+sizeFile);
+        BootSector.setBPB_TaknClus(BootSector.getBPB_TaknClus()-sizeFile);
 
     }
 
